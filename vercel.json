@@ -1,23 +1,12 @@
 {
   "version": 2,
-  "builds": [
+  "public": true,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
     {
-      "src": "dist/server/index.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "dist/client/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/assets/(.*)",
-      "dest": "/dist/client/assets/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/dist/server/index.js"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
