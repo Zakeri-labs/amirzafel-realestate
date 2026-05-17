@@ -1,0 +1,9 @@
+import { Outlet, createFileRoute } from "@tanstack/react-router";
+
+export const Route = createFileRoute("/properties")({
+  component: PropertiesLayout,
+});
+
+function PropertiesLayout() {
+  return <Outlet />;
+}
