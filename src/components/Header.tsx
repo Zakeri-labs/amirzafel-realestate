@@ -52,46 +52,48 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
     : "bg-black/80 backdrop-blur-xl shadow-2xl";
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${bgClass}`}>
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 md:px-8">
-        <Link to="/" className="flex items-center">
-          <Logo light={true} />
-        </Link>
-
-        <nav className="hidden lg:flex items-center gap-8">
-          {nav.map((n) => {
-            const active = pathname === n.to;
-            return (
-              <Link
-                key={n.to}
-                to={n.to}
-                className={`text-sm transition-all hover:opacity-70 ${light ? "text-white/90" : "text-white"} ${active ? "font-bold" : "font-medium"}`}
-              >
-                {t(`nav.${n.key}`)}
-                {active && (
-                  <span className="mt-1 block h-px bg-white" />
-                )}
-              </Link>
-            );
-          })}
-        </nav>
-
-        <div className="flex items-center gap-4">
-          <LanguageSwitcher light={true} />
-          <Link
-            to="/contact"
-            className="hidden md:inline-flex items-center rounded-full px-6 py-2.5 text-sm font-bold transition-all bg-gold text-black hover:bg-white hover:scale-[1.02] active:scale-95 shadow-lg shadow-black/20"
-          >
-            {t("nav.book")}
+    <>
+      <header className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${bgClass}`}>
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 md:px-8">
+          <Link to="/" className="flex items-center">
+            <Logo light={true} />
           </Link>
-          <button className="lg:hidden p-2 hover:bg-white/5 rounded-xl transition-colors" onClick={() => setOpen(true)}>
-            <Menu className="text-white size-7" />
-          </button>
+
+          <nav className="hidden lg:flex items-center gap-8">
+            {nav.map((n) => {
+              const active = pathname === n.to;
+              return (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  className={`text-sm transition-all hover:opacity-70 ${light ? "text-white/90" : "text-white"} ${active ? "font-bold" : "font-medium"}`}
+                >
+                  {t(`nav.${n.key}`)}
+                  {active && (
+                    <span className="mt-1 block h-px bg-white" />
+                  )}
+                </Link>
+              );
+            })}
+          </nav>
+
+          <div className="flex items-center gap-4">
+            <LanguageSwitcher light={true} />
+            <Link
+              to="/contact"
+              className="hidden md:inline-flex items-center rounded-full px-6 py-2.5 text-sm font-bold transition-all bg-gold text-black hover:bg-white hover:scale-[1.02] active:scale-95 shadow-lg shadow-black/20"
+            >
+              {t("nav.book")}
+            </Link>
+            <button className="lg:hidden p-2 hover:bg-white/5 rounded-xl transition-colors" onClick={() => setOpen(true)}>
+              <Menu className="text-white size-7" />
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
       {open && (
-        <div className={`fixed inset-0 z-50 bg-black lg:hidden transition-all duration-500 ease-in-out ${isClosing ? 'opacity-0 -translate-y-full' : 'opacity-100 translate-y-0 animate-in fade-in slide-in-from-top duration-700'}`}>
+        <div className={`fixed inset-0 z-[100] bg-black lg:hidden transition-all duration-500 ease-in-out ${isClosing ? 'opacity-0 -translate-y-full' : 'opacity-100 translate-y-0 animate-in fade-in slide-in-from-top duration-700'}`}>
           <div className="flex items-center justify-between px-6 py-6 border-b border-white/5">
             <Logo light={true} />
             <button onClick={handleClose} className="text-white p-2 hover:bg-white/10 rounded-full transition-all hover:rotate-90">
@@ -120,6 +122,6 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
           </nav>
         </div>
       )}
-    </header>
+    </>
   );
 }

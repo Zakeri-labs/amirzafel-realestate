@@ -201,14 +201,23 @@ function Index() {
 
         {/* Brand Marquee */}
         <div className="absolute bottom-0 inset-x-0 bg-white/5 backdrop-blur-lg border-t border-white/5 py-6 overflow-hidden">
-          <div className="animate-marquee whitespace-nowrap flex items-center gap-24 px-12">
+          <div className="animate-marquee whitespace-nowrap flex items-center gap-12 md:gap-24 px-6 md:px-12">
             {[
               "EMAAR", "DAMAC", "NAKHEEL", "SOBHA", 
               "EMAAR", "DAMAC", "NAKHEEL", "SOBHA",
               "EMAAR", "DAMAC", "NAKHEEL", "SOBHA",
               "EMAAR", "DAMAC", "NAKHEEL", "SOBHA"
             ].map((brand, i) => (
-              <span key={i} className="text-white/40 font-serif font-bold text-2xl tracking-[0.2em]">{brand}</span>
+              <span key={`b1-${i}`} className="text-white/40 font-serif font-bold text-xl md:text-2xl tracking-[0.2em]">{brand}</span>
+            ))}
+            {/* Duplicate for seamless infinite loop */}
+            {[
+              "EMAAR", "DAMAC", "NAKHEEL", "SOBHA", 
+              "EMAAR", "DAMAC", "NAKHEEL", "SOBHA",
+              "EMAAR", "DAMAC", "NAKHEEL", "SOBHA",
+              "EMAAR", "DAMAC", "NAKHEEL", "SOBHA"
+            ].map((brand, i) => (
+              <span key={`b2-${i}`} className="text-white/40 font-serif font-bold text-xl md:text-2xl tracking-[0.2em]">{brand}</span>
             ))}
           </div>
         </div>
@@ -322,11 +331,11 @@ function Index() {
               </div>
 
               {/* IRREGULAR MODERN GALLERY */}
-              <div className="grid grid-cols-2 gap-2 md:gap-6 h-auto md:h-[500px] -mx-4 md:mx-0">
-                <div className="space-y-2 md:space-y-6">
+              <div className="grid grid-cols-2 gap-4 md:gap-6 h-auto md:h-[500px]">
+                <div className="space-y-4 md:space-y-6">
                   <Dialog>
                     <DialogTrigger asChild>
-                      <div className="h-[180px] md:h-[280px] rounded-r-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
+                      <div className="h-[180px] md:h-[280px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
                         <img src="/Images/1.webp" alt="" className="size-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
                           <Maximize className="text-white size-6 md:size-8" />
@@ -340,7 +349,7 @@ function Index() {
                   </Dialog>
                   <Dialog>
                     <DialogTrigger asChild>
-                      <div className="h-[120px] md:h-[180px] rounded-r-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
+                      <div className="h-[120px] md:h-[180px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
                         <img src="/Images/2.webp" alt="" className="size-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
                           <Maximize className="text-white size-6 md:size-8" />
@@ -353,10 +362,10 @@ function Index() {
                     </DialogContent>
                   </Dialog>
                 </div>
-                <div className="pt-8 md:pt-12 space-y-2 md:space-y-6">
+                <div className="pt-8 md:pt-12 space-y-4 md:space-y-6">
                   <Dialog>
                     <DialogTrigger asChild>
-                      <div className="h-[120px] md:h-[180px] rounded-l-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
+                      <div className="h-[120px] md:h-[180px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
                         <img src="/Images/4.webp" alt="" className="size-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
                           <Maximize className="text-white size-6 md:size-8" />
@@ -370,7 +379,7 @@ function Index() {
                   </Dialog>
                   <Dialog>
                     <DialogTrigger asChild>
-                      <div className="h-[180px] md:h-[280px] rounded-l-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
+                      <div className="h-[180px] md:h-[280px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
                         <img src="/Images/5.webp" alt="" className="size-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
                           <Maximize className="text-white size-6 md:size-8" />

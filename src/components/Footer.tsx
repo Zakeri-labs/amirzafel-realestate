@@ -14,7 +14,7 @@ export function Footer() {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
       
       <div className="mx-auto max-w-7xl px-4 md:px-8 relative z-10">
-        <div className="grid grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-16">
+        <div className="grid grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-x-4 gap-y-16 lg:gap-16">
           {/* Brand Column */}
           <div className={`space-y-8 col-span-2 lg:col-span-1 ${isRtl ? 'text-right' : 'text-left'} md:text-start`}>
             <div className={`flex scale-125 origin-left ${isRtl ? 'justify-end' : 'justify-start'} md:justify-start`}>
