@@ -29,12 +29,14 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
   const light = transparent && !scrolled;
   const bgClass = light
     ? "bg-transparent"
-    : "bg-black/55 backdrop-blur-xl shadow-2xl";
+    : "bg-black/80 backdrop-blur-xl shadow-2xl";
 
   return (
     <header className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${bgClass}`}>
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
-        <Link to="/"><Logo light={true} /></Link>
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 md:px-8">
+        <Link to="/" className="flex items-center">
+          <Logo light={true} />
+        </Link>
 
         <nav className="hidden lg:flex items-center gap-8">
           {nav.map((n) => {
@@ -58,11 +60,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
           <LanguageSwitcher light={true} />
           <Link
             to="/contact"
-            className={`hidden md:inline-flex items-center rounded-full px-6 py-2.5 text-sm font-bold transition-all ${
-              light
-                ? "bg-white text-primary hover:bg-white/90"
-                : "bg-white text-primary hover:bg-white/90 hover:scale-[1.02] active:scale-95 shadow-lg shadow-black/20"
-            }`}
+            className="hidden md:inline-flex items-center rounded-full px-6 py-2.5 text-sm font-bold transition-all bg-gold text-black hover:bg-white hover:scale-[1.02] active:scale-95 shadow-lg shadow-black/20"
           >
             {t("nav.book")}
           </Link>
@@ -73,10 +71,10 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
       </div>
 
       {open && (
-        <div className="fixed inset-0 z-50 bg-background lg:hidden">
-          <div className="flex items-center justify-between px-4 py-4 border-b border-border">
-            <Logo />
-            <button onClick={() => setOpen(false)}><X /></button>
+        <div className="fixed inset-0 z-50 bg-black lg:hidden">
+          <div className="flex items-center justify-between px-4 py-4 border-b border-white/10">
+            <Logo light={true} />
+            <button onClick={() => setOpen(false)} className="text-white"><X /></button>
           </div>
           <nav className="flex flex-col p-6 gap-4">
             {nav.map((n) => (

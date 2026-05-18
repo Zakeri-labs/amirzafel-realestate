@@ -30,12 +30,12 @@ export function LanguageSwitcher({ light = false }: { light?: boolean }) {
         <span>{current.label}</span>
       </button>
       {open && (
-        <div className="absolute end-0 mt-2 min-w-32 rounded-md border border-border bg-popover py-1 text-popover-foreground shadow-lg z-50">
+        <div className="absolute end-0 mt-3 min-w-36 rounded-2xl border border-white/10 bg-black/60 backdrop-blur-2xl py-2 text-white shadow-2xl z-50 overflow-hidden">
           {langs.map((l) => (
             <button
               key={l.code}
               onClick={() => { i18n.changeLanguage(l.code); setOpen(false); }}
-              className={`block w-full px-3 py-1.5 text-start text-sm hover:bg-accent ${i18n.language === l.code ? "font-semibold" : ""}`}
+              className={`block w-full px-5 py-2.5 text-start text-sm transition-all hover:bg-white/10 ${i18n.language === l.code ? "font-bold text-gold bg-white/5" : "text-white/80"}`}
             >
               {l.label}
             </button>

@@ -15,7 +15,7 @@ export function WhatsAppForm() {
   };
 
   return (
-    <section className="pb-20 md:pb-28">
+    <section className="pb-20 md:pb-28 reveal">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-primary to-[#0a1f3d] p-8 md:p-12">
           <div className="absolute -end-20 -top-20 size-72 rounded-full bg-[#25D366]/20 blur-3xl" />

@@ -8,7 +8,9 @@ export default {
   hero: {
     eyebrow: "Luxury Living in Dubai",
     title1: "Find Your", title2: "Dream Property", title3: "in Dubai",
-    subtitle: "Exclusive properties in the most prestigious communities. Experience luxury like never before.",
+    subtitle: "Amirfazel Moshrefi | Overlooking Dubai",
+    name: "Amirfazel Moshrefi",
+    tagline: "Overlooking Dubai",
     location: "Location", type: "Property Type", price: "Price Range",
     cta: "Search Properties",
   },
@@ -27,7 +29,7 @@ export default {
   why: {
     eyebrow: "WHY CHOOSE US",
     title1: "The Dubai Way", title2: "To Find Your Home",
-    videoTitle: "Let's get to know each other",
+    videoTitle: "Let's get to know each other!",
     aboutAmirfazel: "About Amirfazel Moshrefi",
     items: [
       { title: "Exclusive Listings", desc: "Access to off-market and exclusive properties." },
@@ -38,13 +40,13 @@ export default {
     cta: "Discover More",
   },
   jalili: {
-    eyebrow: "Jalili Real Estate",
-    title: "Defining Luxury Real Estate.",
-    desc: "Jalili Real Estate represents the pinnacle of Dubai's property market. We don't just find spaces; we curate high-end legacies for those who demand the extraordinary.",
+    eyebrow: "Amirfazel Moshrefi Real Estate",
+    title: "Redefining Luxury Real Estate.",
+    desc: "Amirfazel Moshrefi Real Estate represents the pinnacle of Dubai's property market. We don't just find spaces; we craft legacies for those who demand the extraordinary.",
     cta: "Our Legacy",
-    quote: "Excellence is not an act, but a habit. In Dubai, it's the standard we live by.",
-    founder: "Amirfazel Jalili",
-    role: "Founder",
+    quote: "Excellence is not an act, but a habit. In Dubai, this is the standard we live by.",
+    founder: "Amirfazel Moshrefi",
+    role: "Jalili Real Estate Agent",
   },
   communities: {
     title: "Dubai's Best Areas",

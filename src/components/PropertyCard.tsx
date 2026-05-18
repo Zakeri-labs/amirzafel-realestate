@@ -1,40 +1,52 @@
 import { Link } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
-import { Heart, MapPin, Bed, Bath, Car } from "lucide-react";
+import { Heart, MapPin, Bed, Bath, Maximize, ArrowRight } from "lucide-react";
 import type { Property } from "@/lib/properties";
 
 export function PropertyCard({ p }: { p: Property }) {
   const { t, i18n } = useTranslation();
   const lng = (i18n.language as "en" | "fa" | "ar") in p.title ? (i18n.language as "en" | "fa" | "ar") : "en";
+  const isRtl = i18n.dir() === "rtl";
+
   return (
     <Link
       to="/properties/$id"
       params={{ id: p.id }}
-      className="group block overflow-hidden rounded-xl bg-card shadow-sm transition-shadow hover:shadow-xl"
+      className="group relative aspect-[4/5] block overflow-hidden rounded-[2.5rem] shadow-xl"
     >
-      <div className="relative aspect-[4/3] overflow-hidden">
-        <img src={p.image} alt={p.title[lng]} className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
-        {p.badge && (
-          <span className="absolute start-3 top-3 rounded bg-white/95 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-primary">
-            {t(`featured.${p.badge}`)}
-          </span>
-        )}
-        <button className="absolute end-3 top-3 flex size-9 items-center justify-center rounded-full bg-white/95 text-primary hover:text-destructive">
-          <Heart className="size-4" />
-        </button>
-      </div>
-      <div className="p-6">
-        <div className="flex items-center gap-1.5 text-xs font-bold text-muted-foreground/80 uppercase tracking-wider">
+      <img 
+        src={p.image} 
+        alt={p.title[lng]} 
+        className="size-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-90 transition-opacity duration-500" />
+      
+      {p.badge && (
+        <span className="absolute start-8 top-8 rounded-full bg-gold px-4 py-1.5 text-[0.6rem] font-black uppercase tracking-[0.1em] text-black shadow-lg z-10">
+          {t(`featured.${p.badge}`)}
+        </span>
+      )}
+      
+      <button className="absolute end-8 top-8 flex size-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-gold hover:text-black z-10">
+        <Heart className="size-5" />
+      </button>
+
+      <div className="absolute inset-x-0 bottom-0 px-10 pb-6 pt-10 text-white">
+        <div className="flex items-center gap-2 text-[0.7rem] font-bold text-gold uppercase tracking-[0.3em] mb-4">
           <MapPin className="size-3.5" /> {p.location[lng]}
         </div>
-        <h3 className="mt-3 font-serif text-2xl font-bold text-foreground group-hover:text-primary transition-colors md:text-3xl">{p.title[lng]}</h3>
-        <div className="mt-2 font-serif text-xl font-bold text-primary tracking-tight md:text-2xl">{p.price}</div>
-        <div className="mt-5 flex items-center justify-between text-xs font-bold text-muted-foreground/90 border-t border-border/50 pt-4">
-          <div>{p.area.toLocaleString()} sqft · {p.type[lng]}</div>
-          <div className="flex gap-3">
-            <span className="flex items-center gap-1"><Bed className="size-3.5" />{p.beds}</span>
-            <span className="flex items-center gap-1"><Bath className="size-3.5" />{p.baths}</span>
-            <span className="flex items-center gap-1"><Car className="size-3.5" />{p.parking}</span>
+        <h3 className="font-serif text-4xl font-bold leading-tight mb-3 transition-colors">{p.title[lng]}</h3>
+        <div className="text-2xl font-serif font-medium text-white/90 mb-4">{p.price}</div>
+        
+        <div className="flex items-center gap-6 opacity-80">
+          <div className="flex items-center gap-2 text-sm font-bold">
+            <Bed className="size-4 text-gold" /> {p.beds}
+          </div>
+          <div className="flex items-center gap-2 text-sm font-bold">
+            <Bath className="size-4 text-gold" /> {p.baths}
+          </div>
+          <div className="flex items-center gap-2 text-sm font-bold">
+            <Maximize className="size-4 text-gold" /> {p.area.toLocaleString()} <span className="text-[10px] opacity-60">SQFT</span>
           </div>
         </div>
       </div>

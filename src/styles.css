@@ -99,6 +99,18 @@ html[dir="rtl"]:not([lang="fa"]) {
 }
 
 @layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
   .font-serif { font-family: var(--font-serif); }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -119,4 +131,34 @@ html[dir="rtl"]:not([lang="fa"]) {
   .eyebrow-divider::before, .eyebrow-divider::after {
     content: ""; width: 24px; height: 1px; background: currentColor; opacity: 0.4;
   }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.animate-scroll {
+  animation: scroll 2s infinite;
 }
