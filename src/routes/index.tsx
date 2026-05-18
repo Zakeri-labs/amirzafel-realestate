@@ -129,7 +129,7 @@ function Index() {
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/20" />
         
-        <div className={`relative mx-auto max-w-7xl px-4 pt-20 pb-20 md:px-8 w-full flex flex-col items-start text-start`} dir={isRtl ? 'rtl' : 'ltr'}>
+        <div className={`relative mx-auto max-w-7xl px-4 pt-20 pb-0 md:pb-20 md:px-8 w-full flex flex-col items-start text-start`} dir={isRtl ? 'rtl' : 'ltr'}>
           <div className="max-w-3xl text-white">
             <div className={`eyebrow text-white/90 mb-6 tracking-[0.4em] text-sm uppercase`}>{t("hero.eyebrow")}</div>
             <h1 className="font-serif text-4xl leading-[1.2] md:text-6xl lg:text-7xl font-bold text-white drop-shadow-2xl mb-8">
@@ -137,15 +137,15 @@ function Index() {
               <span className="text-gold italic font-light">{t("hero.title2")}</span> <br />
               {t("hero.title3")}
             </h1>
-            <div className="mt-8 flex items-center gap-4 text-lg md:text-2xl text-white drop-shadow-lg font-serif">
+            <div className="mt-8 flex items-center gap-3 md:gap-4 text-xs md:text-2xl text-white drop-shadow-lg font-serif whitespace-nowrap">
               <span className="font-bold">{t("hero.name")}</span>
-              <div className="w-px h-6 bg-gold/50" />
+              <div className="w-px h-4 md:h-6 bg-gold/50" />
               <span className="text-gold italic font-light">{t("hero.tagline")}</span>
             </div>
           </div>
 
           {/* filter panel & Profile Card Container */}
-          <div className="mt-16 flex flex-col md:flex-row items-center md:items-end gap-8 w-full">
+          <div className="mt-16 mb-[105px] md:mb-0 flex flex-col md:flex-row items-center md:items-end gap-[25px] w-full">
             {/* Search Bar */}
             <div className="flex-1 w-full max-w-4xl h-auto md:h-[95px] rounded-[2rem] md:rounded-[3rem] bg-black/40 p-3 md:p-1.5 backdrop-blur-2xl border border-white/10 shadow-2xl flex items-center">
               <div className="grid grid-cols-1 gap-1 md:grid-cols-[1.2fr_1fr_1fr_auto] w-full items-center">
@@ -198,96 +198,30 @@ function Index() {
             </div>
           </div>
         </div>
+
+        {/* Brand Marquee */}
+        <div className="absolute bottom-0 inset-x-0 bg-white/5 backdrop-blur-lg border-t border-white/5 py-6 overflow-hidden">
+          <div className="animate-marquee whitespace-nowrap flex items-center gap-24 px-12">
+            {[
+              "EMAAR", "DAMAC", "NAKHEEL", "SOBHA", 
+              "EMAAR", "DAMAC", "NAKHEEL", "SOBHA",
+              "EMAAR", "DAMAC", "NAKHEEL", "SOBHA",
+              "EMAAR", "DAMAC", "NAKHEEL", "SOBHA"
+            ].map((brand, i) => (
+              <span key={i} className="text-white/40 font-serif font-bold text-2xl tracking-[0.2em]">{brand}</span>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* PREMIUM WHY CHOOSE US SECTION */}
       <section className="py-24 md:py-32 overflow-hidden bg-[#fdfbf7] reveal">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
-          <div className={`grid lg:grid-cols-[1.2fr_1fr] gap-20 items-start ${isRtl ? 'rtl' : 'ltr'}`}>
-            {/* LEFT SIDE: Content */}
-            <div className={`space-y-16 ${isRtl ? 'text-right' : 'text-left'}`}>
-              <div>
-                <div className={`flex items-center gap-4 mb-8 ${isRtl ? 'flex-row-reverse' : 'flex-row'}`}>
-                  <span className="text-gold font-bold text-[0.65rem] uppercase tracking-[0.3em]">{t("why.eyebrow")}</span>
-                  <div className="h-px w-12 bg-gold/30" />
-                </div>
-                <h2 className="font-serif text-5xl md:text-7xl font-bold text-black leading-[1.1] mb-10">
-                  {t("why.title1")} <br />
-                  <span className="italic font-normal text-gold">{t("why.title2")}</span>
-                </h2>
-                <p className="text-lg text-black/70 leading-relaxed max-w-xl font-medium">
-                  {t("why.items.0.desc")}
-                </p>
-              </div>
-
-              {/* IRREGULAR MODERN GALLERY */}
-              <div className="grid grid-cols-2 gap-6 h-[500px]">
-                <div className="space-y-6">
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <div className="h-[280px] rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
-                        <img src="/Images/1.webp" alt="" className="size-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                          <Maximize className="text-white size-8" />
-                        </div>
-                      </div>
-                    </DialogTrigger>
-                    <DialogContent className="md:max-w-2xl max-w-[90vw] max-h-[80vh] p-0 overflow-hidden bg-transparent border-none flex items-center justify-center">
-                      <DialogTitle className="sr-only">Gallery Image</DialogTitle>
-                      <img src="/Images/1.webp" alt="" className="max-w-full max-h-full object-contain rounded-xl shadow-2xl" />
-                    </DialogContent>
-                  </Dialog>
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <div className="h-[180px] rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
-                        <img src="/Images/2.webp" alt="" className="size-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                          <Maximize className="text-white size-8" />
-                        </div>
-                      </div>
-                    </DialogTrigger>
-                    <DialogContent className="md:max-w-2xl max-w-[90vw] max-h-[80vh] p-0 overflow-hidden bg-transparent border-none flex items-center justify-center">
-                      <DialogTitle className="sr-only">Gallery Image</DialogTitle>
-                      <img src="/Images/2.webp" alt="" className="max-w-full max-h-full object-contain rounded-xl shadow-2xl" />
-                    </DialogContent>
-                  </Dialog>
-                </div>
-                <div className="pt-12 space-y-6">
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <div className="h-[180px] rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
-                        <img src="/Images/4.webp" alt="" className="size-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                          <Maximize className="text-white size-8" />
-                        </div>
-                      </div>
-                    </DialogTrigger>
-                    <DialogContent className="md:max-w-2xl max-w-[90vw] max-h-[80vh] p-0 overflow-hidden bg-transparent border-none flex items-center justify-center">
-                      <DialogTitle className="sr-only">Gallery Image</DialogTitle>
-                      <img src="/Images/4.webp" alt="" className="max-w-full max-h-full object-contain rounded-xl shadow-2xl" />
-                    </DialogContent>
-                  </Dialog>
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <div className="h-[280px] rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
-                        <img src="/Images/5.webp" alt="" className="size-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                          <Maximize className="text-white size-8" />
-                        </div>
-                      </div>
-                    </DialogTrigger>
-                    <DialogContent className="md:max-w-2xl max-w-[90vw] max-h-[80vh] p-0 overflow-hidden bg-transparent border-none flex items-center justify-center">
-                      <DialogTitle className="sr-only">Gallery Image</DialogTitle>
-                      <img src="/Images/5.webp" alt="" className="max-w-full max-h-full object-contain rounded-xl shadow-2xl" />
-                    </DialogContent>
-                  </Dialog>
-                </div>
-              </div>
-            </div>
-
-            {/* RIGHT SIDE: Video Preview */}
-            <div id="video-section" className="relative group w-full scroll-mt-32">
-              <div className="relative aspect-[3/4] md:aspect-[4/6] lg:h-[850px] overflow-hidden rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] bg-black">
+          <div className={`flex flex-col lg:grid lg:grid-cols-[1.2fr_1fr] gap-12 md:gap-20 items-start ${isRtl ? 'rtl' : 'ltr'}`}>
+            
+            {/* VIDEO SECTION (First on Mobile) */}
+            <div id="video-section" className="relative group w-full scroll-mt-32 order-1 lg:order-2">
+              <div className="relative aspect-[3/4] md:aspect-[4/6] lg:h-[850px] overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] bg-black">
                 <video 
                   ref={videoRef}
                   src="/Videos/55.mp4" 
@@ -297,10 +231,10 @@ function Index() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />
                 
                 {/* Header elements in card */}
-                <div className={`absolute top-12 inset-x-12 flex justify-between items-center z-10 ${isRtl ? 'flex-row-reverse' : ''}`}>
-                  <div className="text-gold font-serif text-5xl font-bold">JR</div>
-                  <Link to="/about" className="px-8 py-3 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white text-[0.7rem] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">
-                    {t("why.aboutAmirfazel")} <ChevronRight className={`inline-block size-4 ml-1 ${isRtl ? 'rotate-180 mr-1 ml-0' : ''}`} />
+                <div className={`absolute top-4 md:top-12 inset-x-4 md:inset-x-12 flex justify-between items-center z-10 ${isRtl ? 'flex-row-reverse' : ''}`}>
+                  <div className="text-gold font-serif text-lg md:text-5xl font-bold">JR</div>
+                  <Link to="/about" className="px-3 py-1.5 md:px-8 md:py-3 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white text-[0.45rem] md:text-[0.7rem] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+                    {t("why.aboutAmirfazel")} <ChevronRight className={`inline-block size-2.5 md:size-4 ml-1 ${isRtl ? 'rotate-180 mr-1 ml-0' : ''}`} />
                   </Link>
                 </div>
 
@@ -323,13 +257,13 @@ function Index() {
 
                   {/* Play icon when paused */}
                   {!isPlaying && (
-                    <div className="pointer-events-none relative size-32 flex items-center justify-center rounded-full bg-gold/90 text-black shadow-2xl transition-all duration-500">
-                      <Play className="size-12 fill-current ml-1.5" />
+                    <div className="pointer-events-none relative size-12 md:size-32 flex items-center justify-center rounded-full bg-gold/90 text-black shadow-2xl transition-all duration-500">
+                      <Play className="size-4 md:size-12 fill-current ml-1" />
                     </div>
                   )}
 
                   {/* Volume control button (stays clickable) */}
-                   <div className={`absolute bottom-12 flex gap-4 ${isRtl ? 'left-12' : 'right-12'}`}>
+                   <div className={`absolute bottom-4 md:bottom-12 flex gap-3 md:gap-4 ${isRtl ? 'left-4 md:left-12' : 'right-4 md:right-12'}`}>
                     {isMuted ? (
                       <button 
                         onClick={(e) => {
@@ -339,9 +273,9 @@ function Index() {
                             setIsMuted(false);
                           }
                         }}
-                        className="size-14 flex items-center justify-center rounded-full bg-gold/90 text-black shadow-lg hover:scale-110 transition-all duration-500"
+                        className="size-7 md:size-14 flex items-center justify-center rounded-full bg-gold/90 text-black shadow-lg hover:scale-110 transition-all duration-500"
                       >
-                        <VolumeX className="size-6" />
+                        <VolumeX className="size-3 md:size-6" />
                       </button>
                     ) : (
                       <button 
@@ -352,21 +286,102 @@ function Index() {
                             setIsMuted(true);
                           }
                         }}
-                        className="size-14 flex items-center justify-center rounded-full bg-white/10 hover:bg-white text-white hover:text-black border border-white/10 transition-all duration-500 shadow-lg"
+                        className="size-7 md:size-14 flex items-center justify-center rounded-full bg-white/10 hover:bg-white text-white hover:text-black border border-white/10 transition-all duration-500 shadow-lg"
                       >
-                        <Volume2 className="size-6" />
+                        <Volume2 className="size-3 md:size-6" />
                       </button>
                     )}
                   </div>
                 </div>
 
-                <div className={`absolute bottom-12 inset-x-12 z-10 ${isRtl ? 'text-right' : 'text-left'}`}>
-                  <h3 className="text-5xl font-serif font-bold text-white inline-block w-full leading-tight">{t("why.videoTitle")}</h3>
+                <div className={`absolute bottom-4 md:bottom-12 inset-x-4 md:inset-x-12 z-10 ${isRtl ? 'text-right' : 'text-left'}`}>
+                  <h3 className="text-lg md:text-5xl font-serif font-bold text-white inline-block w-full leading-tight">{t("why.videoTitle")}</h3>
                 </div>
 
                 {/* Dotted pattern decoration */}
-                <div className={`absolute top-1/2 -translate-y-1/2 grid grid-cols-4 gap-3 opacity-30 ${isRtl ? 'right-12' : 'left-12'}`}>
-                  {[...Array(16)].map((_, i) => <div key={i} className="size-1.5 bg-white rounded-full" />)}
+                <div className={`absolute top-1/2 -translate-y-1/2 grid grid-cols-4 gap-2 md:gap-3 opacity-30 ${isRtl ? 'right-4 md:right-12' : 'left-4 md:left-12'}`}>
+                  {[...Array(16)].map((_, i) => <div key={i} className="size-1 md:size-1.5 bg-white rounded-full" />)}
+                </div>
+              </div>
+            </div>
+
+            {/* CONTENT SIDE: Text & Gallery (Second on Mobile) */}
+            <div className={`space-y-12 md:space-y-16 order-2 lg:order-1 ${isRtl ? 'text-right' : 'text-left'}`}>
+              <div>
+                <div className={`flex items-center gap-4 mb-6 md:mb-8 ${isRtl ? 'flex-row-reverse' : 'flex-row'}`}>
+                  <span className="text-gold font-bold text-[0.65rem] uppercase tracking-[0.3em]">{t("why.eyebrow")}</span>
+                  <div className="h-px w-12 bg-gold/30" />
+                </div>
+                <h2 className="font-serif text-4xl md:text-7xl font-bold text-black leading-[1.1] mb-6 md:mb-10">
+                  {t("why.title1")} <br />
+                  <span className="italic font-normal text-gold">{t("why.title2")}</span>
+                </h2>
+                <p className="text-base md:text-lg text-black/70 leading-relaxed max-w-xl font-medium">
+                  {t("why.items.0.desc")}
+                </p>
+              </div>
+
+              {/* IRREGULAR MODERN GALLERY */}
+              <div className="grid grid-cols-2 gap-2 md:gap-6 h-auto md:h-[500px] -mx-4 md:mx-0">
+                <div className="space-y-2 md:space-y-6">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <div className="h-[180px] md:h-[280px] rounded-r-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
+                        <img src="/Images/1.webp" alt="" className="size-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                          <Maximize className="text-white size-6 md:size-8" />
+                        </div>
+                      </div>
+                    </DialogTrigger>
+                    <DialogContent className="md:max-w-2xl max-w-[90vw] max-h-[80vh] p-0 overflow-hidden bg-transparent border-none flex items-center justify-center">
+                      <DialogTitle className="sr-only">Gallery Image</DialogTitle>
+                      <img src="/Images/1.webp" alt="" className="max-w-full max-h-full object-contain rounded-xl shadow-2xl" />
+                    </DialogContent>
+                  </Dialog>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <div className="h-[120px] md:h-[180px] rounded-r-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
+                        <img src="/Images/2.webp" alt="" className="size-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                          <Maximize className="text-white size-6 md:size-8" />
+                        </div>
+                      </div>
+                    </DialogTrigger>
+                    <DialogContent className="md:max-w-2xl max-w-[90vw] max-h-[80vh] p-0 overflow-hidden bg-transparent border-none flex items-center justify-center">
+                      <DialogTitle className="sr-only">Gallery Image</DialogTitle>
+                      <img src="/Images/2.webp" alt="" className="max-w-full max-h-full object-contain rounded-xl shadow-2xl" />
+                    </DialogContent>
+                  </Dialog>
+                </div>
+                <div className="pt-8 md:pt-12 space-y-2 md:space-y-6">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <div className="h-[120px] md:h-[180px] rounded-l-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
+                        <img src="/Images/4.webp" alt="" className="size-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                          <Maximize className="text-white size-6 md:size-8" />
+                        </div>
+                      </div>
+                    </DialogTrigger>
+                    <DialogContent className="md:max-w-2xl max-w-[90vw] max-h-[80vh] p-0 overflow-hidden bg-transparent border-none flex items-center justify-center">
+                      <DialogTitle className="sr-only">Gallery Image</DialogTitle>
+                      <img src="/Images/4.webp" alt="" className="max-w-full max-h-full object-contain rounded-xl shadow-2xl" />
+                    </DialogContent>
+                  </Dialog>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <div className="h-[180px] md:h-[280px] rounded-l-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
+                        <img src="/Images/5.webp" alt="" className="size-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                          <Maximize className="text-white size-6 md:size-8" />
+                        </div>
+                      </div>
+                    </DialogTrigger>
+                    <DialogContent className="md:max-w-2xl max-w-[90vw] max-h-[80vh] p-0 overflow-hidden bg-transparent border-none flex items-center justify-center">
+                      <DialogTitle className="sr-only">Gallery Image</DialogTitle>
+                      <img src="/Images/5.webp" alt="" className="max-w-full max-h-full object-contain rounded-xl shadow-2xl" />
+                    </DialogContent>
+                  </Dialog>
                 </div>
               </div>
             </div>

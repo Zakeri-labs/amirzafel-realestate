@@ -37,7 +37,7 @@ export function WhatsAppForm() {
               </div>
             </div>
 
-            <form onSubmit={onSubmit} className="rounded-3xl bg-black/40 p-8 backdrop-blur-2xl border border-white/10 shadow-2xl md:p-10">
+            <form onSubmit={onSubmit} className="rounded-3xl bg-black/40 p-4 md:p-10 backdrop-blur-2xl border border-white/10 shadow-2xl">
               <div className="space-y-6">
                 <div>
                   <label className="text-[0.7rem] uppercase tracking-[0.2em] text-white/60 font-bold">{t("wa.name")}</label>

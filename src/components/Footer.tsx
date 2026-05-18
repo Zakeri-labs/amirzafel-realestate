@@ -14,16 +14,16 @@ export function Footer() {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
       
       <div className="mx-auto max-w-7xl px-4 md:px-8 relative z-10">
-        <div className="grid gap-16 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+        <div className="grid grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-16">
           {/* Brand Column */}
-          <div className="space-y-8 text-center md:text-start">
-            <div className="flex justify-center md:justify-start scale-125 origin-left">
+          <div className={`space-y-8 col-span-2 lg:col-span-1 ${isRtl ? 'text-right' : 'text-left'} md:text-start`}>
+            <div className={`flex scale-125 origin-left ${isRtl ? 'justify-end' : 'justify-start'} md:justify-start`}>
               <Logo light />
             </div>
-            <p className="max-w-xs text-lg text-white/50 leading-relaxed font-medium mx-auto md:mx-0">
+            <p className={`max-w-xs text-lg text-white/50 leading-relaxed font-medium ${isRtl ? 'text-right mr-0 ml-auto' : 'text-left ml-0 mr-auto'} md:text-start md:mx-0`}>
               {t("footer.desc")}
             </p>
-            <div className="flex gap-4 justify-center md:justify-start">
+            <div className={`flex gap-4 ${isRtl ? 'justify-end' : 'justify-start'} md:justify-start`}>
               <SocialLink href={CONTACT.instagramUrl} icon={<Instagram className="size-5" />} label="Instagram" />
               <SocialLink href={waLink()} icon={
                 <svg viewBox="0 0 32 32" className="size-5 fill-current">
@@ -60,20 +60,22 @@ export function Footer() {
             />
           </FooterCol>
 
-          <FooterCol title={t("footer.follow")}>
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 space-y-4">
-              <p className="text-sm text-white/40 leading-relaxed">
-                Stay updated with the latest luxury property listings in Dubai.
-              </p>
-              <Link 
-                to="/properties" 
-                className="flex items-center justify-between group/btn text-gold font-bold text-sm uppercase tracking-widest"
-              >
-                View Catalog 
-                <ArrowUpRight className="size-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-              </Link>
-            </div>
-          </FooterCol>
+          <div className="col-span-2 lg:col-span-1">
+            <FooterCol title={t("footer.follow")}>
+              <div className="col-span-2 bg-white/5 border border-white/10 rounded-2xl p-6 space-y-4">
+                <p className="text-sm text-white/40 leading-relaxed">
+                  Stay updated with the latest luxury property listings in Dubai.
+                </p>
+                <Link 
+                  to="/properties" 
+                  className="flex items-center justify-between group/btn text-gold font-bold text-sm uppercase tracking-widest"
+                >
+                  View Catalog 
+                  <ArrowUpRight className="size-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                </Link>
+              </div>
+            </FooterCol>
+          </div>
         </div>
 
         <div className="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-white/30 font-medium">
@@ -93,7 +95,7 @@ export function Footer() {
 
 function FooterCol({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 md:space-y-8">
       <h4 className="text-xs uppercase tracking-[0.3em] text-gold font-black">{title}</h4>
       <div className="flex flex-col gap-4">{children}</div>
     </div>
