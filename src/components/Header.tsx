@@ -53,7 +53,7 @@ export function Header({ transparent = false }: { transparent?: boolean }) {
 
   return (
     <>
-      <header className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${bgClass}`}>
+      <header className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${bgClass} animate-in fade-in slide-in-from-top duration-1000`}>
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 md:px-8">
           <Link to="/" className="flex items-center">
             <Logo light={true} />

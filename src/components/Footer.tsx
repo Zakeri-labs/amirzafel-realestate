@@ -14,9 +14,9 @@ export function Footer() {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
       
       <div className="mx-auto max-w-7xl px-4 md:px-8 relative z-10">
-        <div className="grid grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-x-4 gap-y-16 lg:gap-16">
+        <div className="reveal grid grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-x-4 gap-y-16 lg:gap-16">
           {/* Brand Column */}
-          <div className={`space-y-8 col-span-2 lg:col-span-1 ${isRtl ? 'text-right' : 'text-left'} md:text-start`}>
+          <div className={`reveal-left delay-100 space-y-8 col-span-2 lg:col-span-1 ${isRtl ? 'text-right' : 'text-left'} md:text-start`}>
             <div className={`flex scale-125 origin-left ${isRtl ? 'justify-end' : 'justify-start'} md:justify-start`}>
               <Logo light />
             </div>
@@ -34,33 +34,37 @@ export function Footer() {
           </div>
 
           {/* Links Columns */}
-          <FooterCol title={t("footer.quickLinks")}>
-            <FooterLink to="/">{t("nav.home")}</FooterLink>
-            <FooterLink to="/properties">{t("nav.properties")}</FooterLink>
-            <FooterLink to="/blog">{t("nav.blog")}</FooterLink>
-            <FooterLink to="/about">{t("nav.about")}</FooterLink>
-            <FooterLink to="/contact">{t("nav.contact")}</FooterLink>
-          </FooterCol>
+          <div className="reveal delay-200">
+            <FooterCol title={t("footer.quickLinks")}>
+              <FooterLink to="/">{t("nav.home")}</FooterLink>
+              <FooterLink to="/properties">{t("nav.properties")}</FooterLink>
+              <FooterLink to="/blog">{t("nav.blog")}</FooterLink>
+              <FooterLink to="/about">{t("nav.about")}</FooterLink>
+              <FooterLink to="/contact">{t("nav.contact")}</FooterLink>
+            </FooterCol>
+          </div>
 
-          <FooterCol title={t("footer.contact")}>
-            <ContactItem 
-              href={waLink()} 
-              label={CONTACT.whatsapp} 
-              icon={<svg viewBox="0 0 32 32" className="size-4 fill-current"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.3.7 4.5 1.9 6.4L4 29l7.8-2.1c1.8 1 3.9 1.6 6.2 1.6 6.6 0 12-5.4 12-12S22.6 3 16 3z" /></svg>} 
-            />
-            <ContactItem 
-              href={`tel:${CONTACT.phone}`} 
-              label={CONTACT.phone} 
-              icon={<Phone className="size-4" />} 
-            />
-            <ContactItem 
-              href={CONTACT.instagramUrl} 
-              label={`@${CONTACT.instagram}`} 
-              icon={<Instagram className="size-4" />} 
-            />
-          </FooterCol>
+          <div className="reveal delay-300">
+            <FooterCol title={t("footer.contact")}>
+              <ContactItem 
+                href={waLink()} 
+                label={CONTACT.whatsapp} 
+                icon={<svg viewBox="0 0 32 32" className="size-4 fill-current"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.3.7 4.5 1.9 6.4L4 29l7.8-2.1c1.8 1 3.9 1.6 6.2 1.6 6.6 0 12-5.4 12-12S22.6 3 16 3z" /></svg>} 
+              />
+              <ContactItem 
+                href={`tel:${CONTACT.phone}`} 
+                label={CONTACT.phone} 
+                icon={<Phone className="size-4" />} 
+              />
+              <ContactItem 
+                href={CONTACT.instagramUrl} 
+                label={`@${CONTACT.instagram}`} 
+                icon={<Instagram className="size-4" />} 
+              />
+            </FooterCol>
+          </div>
 
-          <div className="col-span-2 lg:col-span-1">
+          <div className="reveal delay-400 col-span-2 lg:col-span-1">
             <FooterCol title={t("footer.follow")}>
               <div className="col-span-2 bg-white/5 border border-white/10 rounded-2xl p-6 space-y-4">
                 <p className="text-sm text-white/40 leading-relaxed">
@@ -78,7 +82,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-white/30 font-medium">
+        <div className="reveal delay-500 mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-white/30 font-medium">
           <div className={isRtl ? "text-right" : "text-left"}>
             © {new Date().getFullYear()} <span className="text-white/60">{t("brand.name")}</span>. {t("footer.rights")}
           </div>

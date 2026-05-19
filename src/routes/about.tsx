@@ -57,10 +57,10 @@ function AnimatedCounter({ value, label }: { value: string; label: string }) {
 
   return (
     <div ref={countRef} className="text-center group">
-      <div className="font-serif text-4xl text-primary md:text-5xl lg:text-6xl transition-transform duration-500 group-hover:scale-110">
+      <div className="font-serif text-3xl text-primary md:text-5xl lg:text-5xl transition-transform duration-500 group-hover:scale-110">
         {prefix}{count.toLocaleString()}{suffix}
       </div>
-      <div className="mt-3 text-[0.65rem] md:text-[0.75rem] uppercase tracking-[0.2em] text-muted-foreground font-black">
+      <div className="mt-3 text-[0.55rem] md:text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground font-black">
         {label}
       </div>
     </div>
@@ -70,6 +70,21 @@ function AnimatedCounter({ value, label }: { value: string; label: string }) {
 function AboutPage() {
   const { t } = useTranslation();
   const stats = t("about.stats", { returnObjects: true }) as { value: string; label: string }[];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="bg-background">
       <Header />

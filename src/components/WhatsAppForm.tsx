@@ -15,14 +15,14 @@ export function WhatsAppForm() {
   };
 
   return (
-    <section className="pb-20 md:pb-28 reveal">
+    <section className="pb-20 md:pb-28">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-primary to-[#0a1f3d] p-8 md:p-12">
+        <div className="reveal relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-primary to-[#0a1f3d] p-8 md:p-12">
           <div className="absolute -end-20 -top-20 size-72 rounded-full bg-[#25D366]/20 blur-3xl" />
           <div className="absolute -start-16 -bottom-16 size-64 rounded-full bg-gold/15 blur-3xl" />
 
           <div className="relative grid items-center gap-10 lg:grid-cols-2">
-            <div className="text-white">
+            <div className="reveal-left delay-200 text-white">
               <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[0.65rem] uppercase tracking-[0.25em] text-white/70 backdrop-blur">
                 <span className="size-1.5 rounded-full bg-[#25D366] animate-pulse" />
                 {t("wa.online")}
@@ -37,7 +37,7 @@ export function WhatsAppForm() {
               </div>
             </div>
 
-            <form onSubmit={onSubmit} className="rounded-3xl bg-black/40 p-4 md:p-10 backdrop-blur-2xl border border-white/10 shadow-2xl">
+            <form onSubmit={onSubmit} className="reveal-right delay-300 rounded-3xl bg-black/40 p-4 md:p-10 backdrop-blur-2xl border border-white/10 shadow-2xl">
               <div className="space-y-6">
                 <div>
                   <label className="text-[0.7rem] uppercase tracking-[0.2em] text-white/60 font-bold">{t("wa.name")}</label>

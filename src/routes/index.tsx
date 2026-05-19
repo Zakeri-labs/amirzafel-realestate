@@ -61,7 +61,7 @@ function Index() {
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('[class*="reveal"]').forEach(el => observer.observe(el));
 
     return () => {
       clearTimeout(timer);
@@ -130,14 +130,18 @@ function Index() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/20" />
         
         <div className={`relative mx-auto max-w-7xl px-4 pt-20 pb-0 md:pb-20 md:px-8 w-full flex flex-col items-start text-start`} dir={isRtl ? 'rtl' : 'ltr'}>
-          <div className="max-w-3xl text-white">
-            <div className={`eyebrow text-white/90 mb-6 tracking-[0.4em] text-sm uppercase`}>{t("hero.eyebrow")}</div>
-            <h1 className="font-serif text-4xl leading-[1.2] md:text-6xl lg:text-7xl font-bold text-white drop-shadow-2xl mb-8">
+          <div className="max-w-4xl space-y-6">
+            <div className="reveal-left inline-flex items-center gap-4">
+              <span className="h-px w-12 bg-gold/50" />
+              <span className="text-gold font-bold text-[0.65rem] md:text-xs uppercase tracking-[0.4em]">Dubai Luxury Real Estate</span>
+            </div>
+            
+            <h1 className="reveal-left delay-100 font-serif text-5xl md:text-8xl font-bold text-white leading-[1.1] drop-shadow-2xl">
               {t("hero.title1")} <br />
-              <span className="text-gold italic font-light">{t("hero.title2")}</span> <br />
-              {t("hero.title3")}
+              <span className="italic font-normal text-gold">{t("hero.title2")}</span>
             </h1>
-            <div className="mt-8 flex items-center gap-3 md:gap-4 text-xs md:text-2xl text-white drop-shadow-lg font-serif whitespace-nowrap">
+
+            <div className="reveal-left delay-200 mt-8 flex items-center gap-3 md:gap-4 text-xs md:text-2xl text-white drop-shadow-lg font-serif whitespace-nowrap">
               <span className="font-bold">{t("hero.name")}</span>
               <div className="w-px h-4 md:h-6 bg-gold/50" />
               <span className="text-gold italic font-light">{t("hero.tagline")}</span>
@@ -147,22 +151,32 @@ function Index() {
           {/* filter panel & Profile Card Container */}
           <div className="mt-16 mb-[105px] md:mb-0 flex flex-col md:flex-row items-center md:items-end gap-[25px] w-full">
             {/* Search Bar */}
-            <div className="flex-1 w-full max-w-4xl h-auto md:h-[95px] rounded-[2rem] md:rounded-[3rem] bg-black/40 p-3 md:p-1.5 backdrop-blur-2xl border border-white/10 shadow-2xl flex items-center">
-              <div className="grid grid-cols-1 gap-1 md:grid-cols-[1.2fr_1fr_1fr_auto] w-full items-center">
-                <FilterField icon={<MapPin className="size-4 text-gold" />} label={t("hero.location")} options={locations} />
-                <FilterField icon={<Building2 className="size-4 text-gold" />} label={t("hero.type")} options={types} />
-                <FilterField icon={<Wallet className="size-4 text-gold" />} label={t("hero.price")} options={prices} />
-                <Link to="/properties" className="flex items-center justify-center size-14 rounded-full bg-gold text-black transition-all hover:bg-white hover:scale-[1.1] active:scale-95 shadow-xl mx-2">
+            <div className="reveal delay-300 flex-1 w-full max-w-4xl h-auto md:h-[95px] rounded-[2rem] md:rounded-[3rem] p-3 md:p-1.5 shadow-2xl flex items-center relative overflow-hidden">
+              <div className="absolute inset-0 bg-black/40 backdrop-blur-2xl border border-white/10 rounded-[2rem] md:rounded-[3rem]" />
+              <div className="grid grid-cols-1 gap-1 md:grid-cols-[1.2fr_1fr_1fr_auto] w-full items-center relative z-10">
+                <div className="reveal delay-400">
+                  <FilterField icon={<MapPin className="size-4 text-gold" />} label={t("hero.location")} options={locations} />
+                </div>
+                <div className="reveal delay-500">
+                  <FilterField icon={<Building2 className="size-4 text-gold" />} label={t("hero.type")} options={types} />
+                </div>
+                <div className="reveal delay-600">
+                  <FilterField icon={<Wallet className="size-4 text-gold" />} label={t("hero.price")} options={prices} />
+                </div>
+                <Link to="/properties" className="reveal delay-700 flex items-center justify-center size-14 rounded-full bg-gold text-black transition-all hover:bg-white hover:scale-[1.1] active:scale-95 shadow-xl mx-2">
                   <Search className="size-5" />
                 </Link>
               </div>
             </div>
 
             {/* Independent Expandable Profile Card */}
-            <div className="relative h-[95px] w-full md:w-80 flex justify-center md:justify-end">
-              <div className={`absolute bottom-0 md:bottom-0 left-1/2 md:left-auto md:right-0 -translate-x-1/2 md:translate-x-0 group w-[90%] md:w-80 rounded-[2rem] md:rounded-[3rem] bg-black/40 backdrop-blur-2xl border border-white/10 shadow-2xl overflow-hidden transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] ${isCardExpanded ? 'h-[440px] z-50' : 'h-[95px]'} hover:h-[440px] hover:z-50`}>
+            <div className="reveal delay-800 relative h-[95px] w-full md:w-80 flex justify-center md:justify-end z-30">
+              <div className={`absolute bottom-0 md:bottom-0 left-1/2 md:left-auto md:right-0 -translate-x-1/2 md:translate-x-0 group w-[90%] md:w-80 rounded-[2rem] md:rounded-[3rem] shadow-2xl overflow-hidden transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] ${isCardExpanded ? 'h-[440px]' : 'h-[95px]'} hover:h-[440px]`}>
+                {/* Unified Background Layer */}
+                <div className="absolute inset-0 bg-black/40 backdrop-blur-2xl border border-white/10 rounded-[2rem] md:rounded-[3rem] transition-all duration-1000" />
+                
                 {/* Profile Card Content Wrapper for consistent padding */}
-                <div className={`flex flex-col h-full transition-all duration-1000 ${isCardExpanded ? 'p-10' : 'p-4 group-hover:p-10'}`}>
+                <div className={`relative z-10 flex flex-col h-full transition-all duration-1000 ${isCardExpanded ? 'p-10' : 'p-4 group-hover:p-10'}`}>
                   
                   {/* Header/Identity Section */}
                   <div className={`flex items-center transition-all duration-1000 ${isCardExpanded ? 'flex-col text-center mb-6 h-auto' : 'flex-row gap-5 h-full group-hover:flex-col group-hover:text-center group-hover:mb-6 group-hover:h-auto'}`}>
@@ -200,7 +214,7 @@ function Index() {
         </div>
 
         {/* Brand Marquee */}
-        <div className="absolute bottom-0 inset-x-0 bg-white/5 backdrop-blur-lg border-t border-white/5 py-6 overflow-hidden">
+        <div className="reveal delay-1000 absolute bottom-0 inset-x-0 bg-white/5 backdrop-blur-lg border-t border-white/5 py-6 overflow-hidden">
           <div className="animate-marquee whitespace-nowrap flex items-center gap-12 md:gap-24 px-6 md:px-12">
             {[
               "EMAAR", "DAMAC", "NAKHEEL", "SOBHA", 
@@ -224,12 +238,12 @@ function Index() {
       </section>
 
       {/* PREMIUM WHY CHOOSE US SECTION */}
-      <section className="py-24 md:py-32 overflow-hidden bg-[#fdfbf7] reveal">
+      <section className="py-24 md:py-32 overflow-hidden bg-[#fdfbf7]">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           <div className={`flex flex-col lg:grid lg:grid-cols-[1.2fr_1fr] gap-12 md:gap-20 items-start ${isRtl ? 'rtl' : 'ltr'}`}>
             
             {/* VIDEO SECTION (First on Mobile) */}
-            <div id="video-section" className="relative group w-full scroll-mt-32 order-1 lg:order-2">
+            <div id="video-section" className="reveal-zoom relative group w-full scroll-mt-32 order-1 lg:order-2">
               <div className="relative aspect-[3/4] md:aspect-[4/6] lg:h-[850px] overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] bg-black">
                 <video 
                   ref={videoRef}
@@ -241,8 +255,8 @@ function Index() {
                 
                 {/* Header elements in card */}
                 <div className={`absolute top-4 md:top-12 inset-x-4 md:inset-x-12 flex justify-between items-center z-10 ${isRtl ? 'flex-row-reverse' : ''}`}>
-                  <div className="text-gold font-serif text-lg md:text-5xl font-bold">JR</div>
-                  <Link to="/about" className="px-3 py-1.5 md:px-8 md:py-3 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white text-[0.45rem] md:text-[0.7rem] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+                  <div className="reveal-left delay-300 text-gold font-serif text-lg md:text-5xl font-bold">JR</div>
+                  <Link to="/about" className="reveal-right delay-300 px-3 py-1.5 md:px-8 md:py-3 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white text-[0.45rem] md:text-[0.7rem] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">
                     {t("why.aboutAmirfazel")} <ChevronRight className={`inline-block size-2.5 md:size-4 ml-1 ${isRtl ? 'rotate-180 mr-1 ml-0' : ''}`} />
                   </Link>
                 </div>
@@ -266,7 +280,7 @@ function Index() {
 
                   {/* Play icon when paused */}
                   {!isPlaying && (
-                    <div className="pointer-events-none relative size-12 md:size-32 flex items-center justify-center rounded-full bg-gold/90 text-black shadow-2xl transition-all duration-500">
+                    <div className="reveal-zoom pointer-events-none relative size-12 md:size-32 flex items-center justify-center rounded-full bg-gold/90 text-black shadow-2xl transition-all duration-500">
                       <Play className="size-4 md:size-12 fill-current ml-1" />
                     </div>
                   )}
@@ -282,7 +296,7 @@ function Index() {
                             setIsMuted(false);
                           }
                         }}
-                        className="size-7 md:size-14 flex items-center justify-center rounded-full bg-gold/90 text-black shadow-lg hover:scale-110 transition-all duration-500"
+                        className="reveal-zoom delay-500 size-7 md:size-14 flex items-center justify-center rounded-full bg-gold/90 text-black shadow-lg hover:scale-110 transition-all duration-500"
                       >
                         <VolumeX className="size-3 md:size-6" />
                       </button>
@@ -295,7 +309,7 @@ function Index() {
                             setIsMuted(true);
                           }
                         }}
-                        className="size-7 md:size-14 flex items-center justify-center rounded-full bg-white/10 hover:bg-white text-white hover:text-black border border-white/10 transition-all duration-500 shadow-lg"
+                        className="reveal-zoom delay-500 size-7 md:size-14 flex items-center justify-center rounded-full bg-white/10 hover:bg-white text-white hover:text-black border border-white/10 transition-all duration-500 shadow-lg"
                       >
                         <Volume2 className="size-3 md:size-6" />
                       </button>
@@ -304,7 +318,7 @@ function Index() {
                 </div>
 
                 <div className={`absolute bottom-4 md:bottom-12 inset-x-4 md:inset-x-12 z-10 ${isRtl ? 'text-right' : 'text-left'}`}>
-                  <h3 className="text-lg md:text-5xl font-serif font-bold text-white inline-block w-full leading-tight">{t("why.videoTitle")}</h3>
+                  <h3 className="reveal delay-700 text-lg md:text-5xl font-serif font-bold text-white inline-block w-full leading-tight">{t("why.videoTitle")}</h3>
                 </div>
 
                 {/* Dotted pattern decoration */}
@@ -316,7 +330,7 @@ function Index() {
 
             {/* CONTENT SIDE: Text & Gallery (Second on Mobile) */}
             <div className={`space-y-12 md:space-y-16 order-2 lg:order-1 ${isRtl ? 'text-right' : 'text-left'}`}>
-              <div>
+              <div className="reveal-left">
                 <div className={`flex items-center gap-4 mb-6 md:mb-8 ${isRtl ? 'flex-row-reverse' : 'flex-row'}`}>
                   <span className="text-gold font-bold text-[0.65rem] uppercase tracking-[0.3em]">{t("why.eyebrow")}</span>
                   <div className="h-px w-12 bg-gold/30" />
@@ -335,7 +349,7 @@ function Index() {
                 <div className="space-y-4 md:space-y-6">
                   <Dialog>
                     <DialogTrigger asChild>
-                      <div className="h-[180px] md:h-[280px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
+                      <div className="reveal-zoom delay-100 h-[180px] md:h-[280px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
                         <img src="/Images/1.webp" alt="" className="size-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
                           <Maximize className="text-white size-6 md:size-8" />
@@ -349,7 +363,7 @@ function Index() {
                   </Dialog>
                   <Dialog>
                     <DialogTrigger asChild>
-                      <div className="h-[120px] md:h-[180px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
+                      <div className="reveal-zoom delay-200 h-[120px] md:h-[180px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
                         <img src="/Images/2.webp" alt="" className="size-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
                           <Maximize className="text-white size-6 md:size-8" />
@@ -365,7 +379,7 @@ function Index() {
                 <div className="pt-8 md:pt-12 space-y-4 md:space-y-6">
                   <Dialog>
                     <DialogTrigger asChild>
-                      <div className="h-[120px] md:h-[180px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
+                      <div className="reveal-zoom delay-300 h-[120px] md:h-[180px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
                         <img src="/Images/4.webp" alt="" className="size-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
                           <Maximize className="text-white size-6 md:size-8" />
@@ -379,7 +393,7 @@ function Index() {
                   </Dialog>
                   <Dialog>
                     <DialogTrigger asChild>
-                      <div className="h-[180px] md:h-[280px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
+                      <div className="reveal-zoom delay-400 h-[180px] md:h-[280px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden group relative cursor-pointer">
                         <img src="/Images/5.webp" alt="" className="size-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center opacity-0 group-hover:opacity-100">
                           <Maximize className="text-white size-6 md:size-8" />
@@ -399,17 +413,17 @@ function Index() {
       </section>
 
       {/* FEATURED PROPERTIES */}
-      <section id="properties" className="pt-8 pb-24 md:pt-12 md:pb-32 reveal">
+      <section id="properties" className="pt-8 pb-24 md:pt-12 md:pb-32 bg-[#fdfbf7]">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <div className={isRtl ? "text-right" : "text-left"}>
+            <div className={`reveal-left ${isRtl ? "text-right" : "text-left"}`}>
               <div className="eyebrow eyebrow-divider">{t("featured.eyebrow")}</div>
               <h2 className="mt-4 font-serif text-4xl font-bold md:text-5xl text-black">{t("featured.title")}</h2>
               <p className="mt-3 text-black/60">{t("featured.subtitle")}</p>
             </div>
           </div>
 
-          <div className="mt-12">
+          <div className="mt-12 reveal-zoom delay-200">
             <Carousel
               opts={{
                 align: "start",
@@ -435,24 +449,24 @@ function Index() {
       </section>
 
       {/* JALILI REAL ESTATE (Formerly Story) */}
-      <section className="overflow-hidden bg-black py-24 md:py-32 text-white reveal">
+      <section className="overflow-hidden bg-black py-24 md:py-32 text-white">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           <div className={`grid items-center gap-16 lg:grid-cols-2 ${isRtl ? 'rtl' : 'ltr'}`}>
-            <div className={`relative ${isRtl ? 'text-right' : 'text-left'}`}>
+            <div className={`reveal-left relative ${isRtl ? 'text-right' : 'text-left'}`}>
               <div className="absolute -top-20 -left-20 size-64 bg-gold/10 blur-[100px] rounded-full" />
-              <div className="eyebrow mb-6 text-gold tracking-[0.4em] uppercase text-sm font-bold">{t("jalili.eyebrow")}</div>
-              <h2 className="font-serif text-5xl md:text-7xl font-bold leading-tight mb-8">
+              <div className="reveal delay-100 eyebrow mb-6 text-gold tracking-[0.4em] uppercase text-sm font-bold">{t("jalili.eyebrow")}</div>
+              <h2 className="reveal delay-200 font-serif text-5xl md:text-7xl font-bold leading-tight mb-8">
                 {isRtl ? (
                   <>تعریف دوباره <span className="italic font-normal">املاک لوکس</span>.</>
                 ) : (
                   <>Defining <span className="italic font-normal">Luxury</span> <br /> Real Estate.</>
                 )}
               </h2>
-              <p className="text-lg font-medium leading-relaxed text-white/60 max-w-xl">
+              <p className="reveal delay-300 text-lg font-medium leading-relaxed text-white/60 max-w-xl">
                 {t("jalili.desc")}
               </p>
               
-              <div className={`mt-12 flex items-center gap-8 ${isRtl ? 'flex-row-reverse' : ''}`}>
+              <div className={`reveal delay-400 mt-12 flex items-center gap-8 ${isRtl ? 'flex-row-reverse' : ''}`}>
                 <Link to="/about" className="px-10 py-5 bg-gold text-black font-bold rounded-2xl hover:bg-white transition-all duration-500 hover:scale-105 active:scale-95">
                   {t("jalili.cta")}
                 </Link>
@@ -469,14 +483,14 @@ function Index() {
               </div>
             </div>
             
-            <div className="relative group">
+            <div className="reveal-right relative group">
               <div className="aspect-[4/5] overflow-hidden rounded-[3.5rem] border border-white/10 shadow-2xl relative">
                 <img src="/Images/to.webp" alt="Jalili Real Estate" className="size-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
               </div>
               
               {/* Floating Quote */}
-              <div className={`absolute -bottom-8 w-80 p-10 rounded-[2.5rem] bg-white/10 backdrop-blur-3xl border border-white/10 shadow-2xl hidden md:block ${isRtl ? '-left-8' : '-right-8'}`}>
+              <div className={`reveal delay-300 absolute -bottom-8 w-80 p-10 rounded-[2.5rem] bg-white/10 backdrop-blur-3xl border border-white/10 shadow-2xl hidden md:block ${isRtl ? '-left-8' : '-right-8'}`}>
                 <Star className={`size-8 text-gold fill-gold mb-6 ${isRtl ? 'mr-0 ml-auto' : ''}`} />
                 <p className={`text-lg font-medium italic text-white/90 leading-relaxed ${isRtl ? 'text-right' : 'text-left'}`}>
                   "{t("jalili.quote")}"
@@ -495,19 +509,19 @@ function Index() {
       </section>
 
       {/* COMMUNITIES */}
-      <section className="py-24 md:py-32 overflow-hidden bg-[#fdfbf7] reveal">
+      <section className="py-24 md:py-32 overflow-hidden bg-[#fdfbf7]">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-8">
-            <div className={isRtl ? "text-right" : "text-left"}>
+            <div className={`reveal-left ${isRtl ? "text-right" : "text-left"}`}>
               <div className="eyebrow eyebrow-divider">{t("communities.eyebrow") || "Explore"}</div>
               <h2 className="mt-4 font-serif text-5xl md:text-6xl font-bold text-black">{t("communities.title")}</h2>
             </div>
-            <Link to="/communities" className="inline-flex items-center gap-3 text-base font-bold text-black hover:text-gold transition-colors">
+            <Link to="/communities" className="reveal-right inline-flex items-center gap-3 text-base font-bold text-black hover:text-gold transition-colors">
               {t("communities.viewAll")} <ArrowRight className="size-5 rtl:rotate-180" />
             </Link>
           </div>
           
-          <div className="mt-8">
+          <div className="mt-8 reveal delay-200">
             <Carousel
               opts={{
                 align: "start",
